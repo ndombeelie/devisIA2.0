@@ -1,0 +1,59 @@
+{
+  "name": "devisai-desktop",
+  "version": "1.0.0",
+  "description": "Logiciel Desktop de Création de Devis Professionnels avec IA",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run react-dev\" \"wait-on http://localhost:3000 && npm run electron-dev\"",
+    "react-dev": "react-scripts start",
+    "electron-dev": "electron .",
+    "build": "react-scripts build",
+    "electron-build": "npm run build && electron-builder",
+    "start": "concurrently \"npm run react-start\" \"electron .\"",
+    "react-start": "serve -s build"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "electron-is-dev": "^3.0.1",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.1",
+    "qrcode": "^1.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "5.0.1",
+    "serve": "^14.2.1",
+    "uuid": "^9.0.1",
+    "pdfmake": "^0.2.9"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.devisai.desktop",
+    "productName": "DevisAI Desktop",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "electron/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    }
+  },
+  "browserslist": {
+    "production": [
+      "last 1 electron version"
+    ],
+    "development": [
+      "last 1 electron version"
+    ]
+  }
+}
